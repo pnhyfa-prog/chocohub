@@ -1,0 +1,213 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ChocoHub | Our Chocolates</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #fff8f0;
+  color: #402016;
+}
+
+header {
+  background: #4b2118;
+  color: white;
+  text-align: center;
+  padding: 25px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 36px;
+}
+
+header p {
+  color: #ffe0b2;
+}
+
+h2 {
+  text-align: center;
+  margin: 35px 0 10px;
+  font-size: 30px;
+}
+
+.subtitle {
+  text-align: center;
+  color: #795548;
+  margin-bottom: 30px;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 25px;
+  padding: 20px 5%;
+}
+
+.card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 5px 18px #00000015;
+  text-align: center;
+  padding-bottom: 22px;
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-7px);
+}
+
+.card img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+}
+
+.card h3 {
+  margin: 15px 8px 8px;
+}
+
+.description {
+  color: #777;
+  padding: 0 12px;
+  min-height: 36px;
+}
+
+.price {
+  color: #8b351e;
+  font-size: 23px;
+  font-weight: bold;
+}
+
+button {
+  background: #7b3423;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 12px 25px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+button:hover {
+  background: #b85c35;
+}
+
+#cart {
+  text-align: center;
+  background: #f5e3d1;
+  padding: 20px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+footer {
+  background: #4b2118;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 30px;
+}
+
+@media (max-width: 750px) {
+  .products {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: 15px;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .products {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>🍫 ChocoHub</h1>
+  <p>Homemade with Love, Crafted with Chocolate</p>
+</header>
+
+<h2>Discover Our Delicious Chocolates</h2>
+<p class="subtitle">Handcrafted treats made for every sweet moment!</p>
+
+<div id="cart">🛒 Your Cart: <span id="cartCount">0</span> items</div>
+
+<section class="products">
+
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1548907040-4d42f1e7d4f2?w=500" alt="Classic chocolate">
+    <h3>Classic Chocolate</h3>
+    <p class="description">Smooth, rich homemade chocolate.</p>
+    <p class="price">₹199</p>
+    <button onclick="addToCart('Classic Chocolate',199)">Add to Cart</button>
+  </div>
+
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1511381939415-e44015466834?w=500" alt="Chocolate gift box">
+    <h3>Chocolate Gift Box</h3>
+    <p class="description">A lovely gift for someone special.</p>
+    <p class="price">₹399</p>
+    <button onclick="addToCart('Chocolate Gift Box',399)">Add to Cart</button>
+  </div>
+
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1549007994-cb92caebd54b?w=500" alt="Chocolate truffles">
+    <h3>Chocolate Truffles</h3>
+    <p class="description">Delicious, soft chocolate bites.</p>
+    <p class="price">₹249</p>
+    <button onclick="addToCart('Chocolate Truffles',249)">Add to Cart</button>
+  </div>
+
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1481391319762-47dff72954d9?w=500" alt="Chocolate treats">
+    <h3>Hazelnut Chocolate</h3>
+    <p class="description">Chocolate with a nutty, crunchy twist.</p>
+    <p class="price">₹299</p>
+    <button onclick="addToCart('Hazelnut Chocolate',299)">Add to Cart</button>
+  </div>
+
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=500" alt="Chocolate brownies">
+    <h3>Chocolate Brownies</h3>
+    <p class="description">Rich, fudgy homemade brownies.</p>
+    <p class="price">₹179</p>
+    <button onclick="addToCart('Chocolate Brownies',179)">Add to Cart</button>
+  </div>
+
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1541783245831-57d6fb0926d3?w=500" alt="Chocolate dessert">
+    <h3>Luxury Chocolate Box</h3>
+    <p class="description">Premium chocolates for celebrations.</p>
+    <p class="price">₹599</p>
+    <button onclick="addToCart('Luxury Chocolate Box',599)">Add to Cart</button>
+  </div>
+
+</section>
+
+<footer>
+  <p>© 2026 ChocoHub | Made with ❤️ and Chocolate</p>
+</footer>
+
+<script>
+let cartCount = 0;
+
+function addToCart(name, price) {
+  cartCount++;
+  document.getElementById("cartCount").textContent = cartCount;
+  alert(name + " added to your cart! Price: ₹" + price);
+}
+</script>
+
+</body>
+</html>
